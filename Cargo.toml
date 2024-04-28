@@ -1,0 +1,19 @@
+[workspace]
+members = [
+    "build-info",
+    "constant",
+    "crypto",
+    "fixed-hash",
+    "gen-types",
+    "hash",
+    "jsonrpc-types",
+    "occupied-capacity",
+    "rational",
+    "types",
+]
+resolver = "2"
+
+
+[workspace.dependencies]
+tempfile = "3"
+itertools = "0.11.0"

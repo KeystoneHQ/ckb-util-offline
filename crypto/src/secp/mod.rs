@@ -12,16 +12,16 @@ lazy_static! {
 }
 
 mod error;
-mod generator;
+// mod generator;
 mod privkey;
 mod pubkey;
 mod signature;
 
 pub use self::error::Error;
-pub use self::generator::Generator;
+// pub use self::generator::Generator;
 pub use self::privkey::Privkey;
 pub use self::pubkey::Pubkey;
 pub use self::signature::Signature;
 
-#[cfg(test)]
-mod tests;
+// #[cfg(test)]
+// mod tests;

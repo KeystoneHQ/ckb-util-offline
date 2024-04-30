@@ -1,11 +1,12 @@
 use super::error::Error;
 use super::signature::Signature;
 use super::{Message, Pubkey, SECP256K1};
+use alloc::format;
 use ckb_fixed_hash::H256;
 use secp256k1::Message as SecpMessage;
 use secp256k1::{PublicKey, SecretKey};
-use std::str::FromStr;
-use std::{ptr, sync::atomic};
+use alloc::str::FromStr;
+use core::{ptr, sync::atomic};
 
 /// Wrapped private 256-bit key used as x in an ECDSA signature
 #[derive(Clone, Eq, PartialEq)]

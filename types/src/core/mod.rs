@@ -17,7 +17,7 @@ pub mod error;
 // disble service and tx_pool module
 // pub mod hardfork;
 // pub mod service;
-// pub mod tx_pool;
+pub mod tx_pool;
 
 // #[cfg(test)]
 // mod tests;

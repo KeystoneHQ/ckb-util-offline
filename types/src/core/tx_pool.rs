@@ -8,11 +8,11 @@ use crate::{
     packed::Byte32,
     H256,
 };
-use alloc::{string::String, vec::Vec};
+use alloc::{string::{String, ToString}, vec::Vec};
 use ckb_error::{
     impl_error_conversion_with_kind, prelude::*, Error, ErrorKind, InternalError, InternalErrorKind,
 };
-use core::cmp::Ordering;
+
 use hashbrown::HashMap;
 
 /// TX reject message
@@ -279,7 +279,7 @@ pub const DEFAULT_BYTES_PER_CYCLES: f64 = 0.000_170_571_4_f64;
     note = "Please use the get_transaction_weight instead"
 )]
 pub fn get_transaction_virtual_bytes(tx_size: usize, cycles: u64) -> u64 {
-    core::cmp::max(
+    ::core::cmp::max(
         tx_size as u64,
         (cycles as f64 * DEFAULT_BYTES_PER_CYCLES) as u64,
     )
@@ -291,7 +291,7 @@ pub fn get_transaction_virtual_bytes(tx_size: usize, cycles: u64) -> u64 {
 /// Introducing the transaction weight converts the multi-dimensional knapsack to a typical knapsack problem,
 /// which has a simple greedy algorithm.
 pub fn get_transaction_weight(tx_size: usize, cycles: u64) -> u64 {
-    core::cmp::max(
+    ::core::cmp::max(
         tx_size as u64,
         (cycles as f64 * DEFAULT_BYTES_PER_CYCLES) as u64,
     )

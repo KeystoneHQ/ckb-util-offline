@@ -2,10 +2,13 @@ use super::error::Error;
 use super::signature::Signature;
 use super::Message;
 use super::SECP256K1;
+use alloc::vec::Vec;
 use ckb_fixed_hash::H512;
 use secp256k1::Message as SecpMessage;
 use secp256k1::PublicKey;
-use std::{fmt, ops};
+use alloc::fmt;
+use core::ops;
+
 
 /// A Secp256k1 512-bit public key, used for verification of signatures
 #[derive(Debug, Eq, PartialEq, Hash, Clone)]

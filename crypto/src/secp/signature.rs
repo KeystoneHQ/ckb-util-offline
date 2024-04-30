@@ -2,12 +2,13 @@ use super::error::Error;
 use super::pubkey::Pubkey;
 use super::Message;
 use super::SECP256K1;
+use alloc::vec::Vec;
 use ckb_fixed_hash::{h256, H256, H520};
 use faster_hex::hex_string;
 use secp256k1::ecdsa::{RecoverableSignature, RecoveryId};
 use secp256k1::Message as SecpMessage;
-use std::fmt;
-use std::str::FromStr;
+use alloc::fmt;
+use alloc::str::FromStr;
 
 /// RecoverableSignature compact serialize
 #[derive(Clone)]

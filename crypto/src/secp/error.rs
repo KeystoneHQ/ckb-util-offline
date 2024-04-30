@@ -1,3 +1,4 @@
+use alloc::string::String;
 use secp256k1::Error as SecpError;
 use thiserror::Error;
 

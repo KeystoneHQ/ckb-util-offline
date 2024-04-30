@@ -9,7 +9,7 @@ homepage = "https://github.com/nervosnetwork/ckb"
 repository = "https://github.com/nervosnetwork/ckb"
 
 [dependencies]
-molecule = {version = "0.7.5", default-features = false }
+molecule = {version = "0.8.0", default-features = false }
 ckb-fixed-hash = { path = "../fixed-hash", version = "= 0.115.0-rc2-offline" }
 numext-fixed-uint = { version = "0.2.6",  git = "https://github.com/KeystoneHQ/rust-numext.git", features=["support_serde"]}
 bytes = { version="1", default-features=false, features = ["serde"] }

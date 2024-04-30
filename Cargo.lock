@@ -166,7 +166,7 @@ dependencies = [
  "ckb-fixed-hash",
  "ckb-hash",
  "ckb-occupied-capacity",
- "molecule 0.8.0",
+ "molecule",
  "numext-fixed-uint",
 ]
 
@@ -251,7 +251,7 @@ dependencies = [
  "derive_more",
  "hashbrown",
  "merkle-cbt",
- "molecule 0.7.5",
+ "molecule",
  "numext-fixed-uint",
  "once_cell",
  "proptest",
@@ -373,15 +373,6 @@ name = "merkle-cbt"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "171d2f700835121c3b04ccf0880882987a050fd5c7ae88148abf537d33dd3a56"
-dependencies = [
- "cfg-if",
-]
-
-[[package]]
-name = "molecule"
-version = "0.7.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d4fd9767ab5e5f2ea40f71ff4c8bdb633c50509052e093c2fdd0e390a749dfa3"
 dependencies = [
  "cfg-if",
 ]

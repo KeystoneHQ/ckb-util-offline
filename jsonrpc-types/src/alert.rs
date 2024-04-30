@@ -1,6 +1,7 @@
 use crate::{bytes::JsonBytes, Timestamp, Uint32};
+use alloc::{borrow::ToOwned, string::String, vec::Vec};
 use ckb_types::{packed, prelude::*};
-use schemars::JsonSchema;
+// use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The alert identifier that is used to filter duplicated alerts.
@@ -36,7 +37,7 @@ pub type AlertPriority = Uint32;
 /// }
 /// # "#).unwrap();
 /// ```
-#[derive(Clone, Default, Serialize, Deserialize, PartialEq, Eq, Hash, Debug, JsonSchema)]
+#[derive(Clone, Default, Serialize, Deserialize, PartialEq, Eq, Hash, Debug)]
 pub struct Alert {
     /// The identifier of the alert. Clients use id to filter duplicated alerts.
     pub id: AlertId,
@@ -61,7 +62,7 @@ pub struct Alert {
 }
 
 /// An alert sent by RPC `send_alert`.
-#[derive(Clone, Default, Serialize, Deserialize, PartialEq, Eq, Hash, Debug, JsonSchema)]
+#[derive(Clone, Default, Serialize, Deserialize, PartialEq, Eq, Hash, Debug)]
 pub struct AlertMessage {
     /// The unique alert ID.
     pub id: AlertId,

@@ -1,7 +1,9 @@
 use ckb_types::{bytes::Bytes, packed, prelude::*};
 use faster_hex::{hex_decode, hex_encode};
-use schemars::JsonSchema;
-use std::fmt;
+// use schemars::JsonSchema;
+use alloc::{fmt::{self, format}, string::String, vec::{Vec}};
+use alloc::format;
+use alloc::vec;
 
 /// Variable-length binary encoded as a 0x-prefixed hex string in JSON.
 ///
@@ -16,14 +18,14 @@ use std::fmt;
 /// | "0x0"      | Invalid, each byte requires 2 digits |
 #[derive(Clone, PartialEq, Eq, Hash, Debug, Default)]
 pub struct JsonBytes(Bytes);
-impl JsonSchema for JsonBytes {
-    fn schema_name() -> String {
-        String::from("JsonBytes")
-    }
-    fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
-        gen.subschema_for::<String>().into_object().into()
-    }
-}
+// impl JsonSchema for JsonBytes {
+//     fn schema_name() -> String {
+//         String::from("JsonBytes")
+//     }
+//     fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+//         gen.subschema_for::<String>().into_object().into()
+//     }
+// }
 
 impl JsonBytes {
     /// Creates the `JsonBytes` from `Bytes`.
@@ -124,7 +126,7 @@ impl serde::Serialize for JsonBytes {
         buffer[1] = b'x';
         hex_encode(self.as_bytes(), &mut buffer[2..])
             .map_err(|e| serde::ser::Error::custom(format!("{e}")))?;
-        serializer.serialize_str(unsafe { ::std::str::from_utf8_unchecked(&buffer) })
+        serializer.serialize_str(unsafe { ::core::str::from_utf8_unchecked(&buffer) })
     }
 }
 

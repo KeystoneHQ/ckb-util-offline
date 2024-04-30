@@ -1,5 +1,6 @@
 use crate::{Byte32, Uint128, Uint32, Uint64};
-use schemars::JsonSchema;
+use alloc::string::{String, ToString};
+// use schemars::JsonSchema;
 
 macro_rules! impl_json_schema_for_type {
     ($type:ty, $inner_ty:ty, $name:expr) => {

@@ -1,12 +1,13 @@
-use crate::{AlertMessage, EpochNumber, EpochNumberWithFraction, Ratio, Timestamp};
+use crate::{alert::AlertMessage, EpochNumber, EpochNumberWithFraction, Ratio, Timestamp};
+use alloc::{string::String, vec::Vec};
 use ckb_types::{H256, U256};
-use schemars::JsonSchema;
+// use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
+use alloc::collections::BTreeMap;
 
 /// Deployment name
 #[derive(
-    Clone, Hash, Deserialize, Serialize, Debug, Ord, PartialOrd, Eq, PartialEq, JsonSchema,
+    Clone, Hash, Deserialize, Serialize, Debug, Ord, PartialOrd, Eq, PartialEq,
 )]
 #[serde(rename_all = "snake_case")]
 pub enum DeploymentPos {
@@ -17,7 +18,7 @@ pub enum DeploymentPos {
 }
 
 /// The possible softfork deployment state
-#[derive(Deserialize, Serialize, Debug, JsonSchema)]
+#[derive(Deserialize, Serialize, Debug)]
 #[serde(rename_all = "snake_case")]
 pub enum DeploymentState {
     /// First state that each softfork starts.
@@ -35,7 +36,7 @@ pub enum DeploymentState {
 }
 
 /// Chain information.
-#[derive(Deserialize, Serialize, Debug, JsonSchema)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct DeploymentsInfo {
     /// requested block hash
     pub hash: H256,
@@ -47,7 +48,7 @@ pub struct DeploymentsInfo {
 }
 
 /// An object containing various state info regarding deployments of consensus changes
-#[derive(Deserialize, Serialize, Debug, JsonSchema)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct DeploymentInfo {
     /// determines which bit in the `version` field of the block is to be used to signal the softfork lock-in and activation.
     /// It is chosen from the set {0,1,2,...,28}.
@@ -78,7 +79,7 @@ pub struct DeploymentInfo {
 }
 
 /// Chain information.
-#[derive(Deserialize, Serialize, Debug, JsonSchema)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct ChainInfo {
     /// The network name.
     ///
@@ -94,7 +95,7 @@ pub struct ChainInfo {
     /// Current difficulty.
     ///
     /// Decoded from the epoch `compact_target`.
-    #[schemars(schema_with = "crate::json_schema::u256_json_schema")]
+    // #[schemars(schema_with = "crate::json_schema::u256_json_schema")]
     pub difficulty: U256,
     /// Whether the local node is in IBD, Initial Block Download.
     ///

@@ -1,3 +1,5 @@
+
+
 use ckb_types::{
     core, packed,
     prelude::{Pack, Unpack},
@@ -6,7 +8,9 @@ use serde::{
     de::{Error, Visitor},
     Deserialize, Deserializer, Serialize, Serializer,
 };
-use std::{fmt, marker, num};
+use alloc::format;
+use alloc::fmt;
+use ::core::{marker, num};
 
 pub trait Uint: Copy + fmt::LowerHex {
     const NAME: &'static str;

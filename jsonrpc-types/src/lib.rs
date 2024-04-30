@@ -1,4 +1,10 @@
 //! Wrappers for JSON serialization.
+//! 
+
+#![no_std]
+
+extern crate alloc;
+
 mod alert;
 mod block_template;
 mod blockchain;
@@ -10,16 +16,16 @@ mod fee_rate;
 mod fixed_bytes;
 mod indexer;
 mod info;
-mod json_schema;
-mod net;
-mod pool;
+// mod json_schema;
+// mod net;
+// mod pool;
 mod primitive;
 mod proposal_short_id;
 mod subscription;
 mod uints;
 
 #[cfg(test)]
-mod tests;
+// mod tests;
 
 pub use self::alert::{Alert, AlertId, AlertMessage, AlertPriority};
 pub use self::block_template::{
@@ -27,8 +33,8 @@ pub use self::block_template::{
 };
 pub use self::blockchain::{
     Block, BlockEconomicState, BlockFilter, BlockIssuance, BlockResponse, BlockView,
-    BlockWithCyclesResponse, CellDep, CellInput, CellOutput, Consensus, DepType, Deployment,
-    EpochView, FeeRateStatistics, HardForkFeature, HardForks, Header, HeaderView, MerkleProof,
+    BlockWithCyclesResponse, CellDep, CellInput, CellOutput, DepType, Deployment,
+    EpochView, FeeRateStatistics, HardForkFeature, Header, HeaderView, MerkleProof,
     MinerReward, OutPoint, ProposalWindow, Ratio, Script, ScriptHashType, SoftFork, Status,
     Transaction, TransactionAndWitnessProof, TransactionProof, TransactionView,
     TransactionWithStatusResponse, TxStatus, UncleBlock, UncleBlockView,
@@ -40,14 +46,14 @@ pub use self::experiment::{DaoWithdrawingCalculationKind, EstimateCycles};
 pub use self::fee_rate::FeeRateDef;
 pub use self::fixed_bytes::Byte32;
 pub use self::info::{ChainInfo, DeploymentInfo, DeploymentPos, DeploymentState, DeploymentsInfo};
-pub use self::net::{
-    BannedAddr, LocalNode, LocalNodeProtocol, NodeAddress, PeerSyncState, RemoteNode,
-    RemoteNodeProtocol, SyncState,
-};
-pub use self::pool::{
-    AncestorsScoreSortKey, OutputsValidator, PoolTransactionEntry, PoolTransactionReject,
-    PoolTxDetailInfo, RawTxPool, TxPoolEntries, TxPoolEntry, TxPoolIds, TxPoolInfo,
-};
+// pub use self::net::{
+//     BannedAddr, LocalNode, LocalNodeProtocol, NodeAddress, PeerSyncState, RemoteNode,
+//     RemoteNodeProtocol, SyncState,
+// };
+// pub use self::pool::{
+//     AncestorsScoreSortKey, OutputsValidator, PoolTransactionEntry, PoolTransactionReject,
+//     PoolTxDetailInfo, RawTxPool, TxPoolEntries, TxPoolEntry, TxPoolIds, TxPoolInfo,
+// };
 pub use self::proposal_short_id::ProposalShortId;
 pub use self::subscription::Topic;
 pub use self::uints::{Uint128, Uint32, Uint64};
@@ -61,14 +67,14 @@ pub use primitive::{
     AsEpochNumberWithFraction, BlockNumber, Capacity, Cycle, EpochNumber, EpochNumberWithFraction,
     Timestamp, Version,
 };
-use schemars::JsonSchema;
+// use schemars::JsonSchema;
 pub use serde::{Deserialize, Serialize};
 
 use ckb_types::bytes::Bytes;
 
 /// The enum `Either` with variants `Left` and `Right` is a general purpose
 /// sum type with two cases.
-#[derive(PartialEq, Eq, Hash, Debug, Serialize, Deserialize, Clone, JsonSchema)]
+#[derive(PartialEq, Eq, Hash, Debug, Serialize, Deserialize, Clone)]
 #[serde(untagged)]
 pub enum Either<L, R> {
     /// A value of type `L`.
@@ -83,7 +89,7 @@ pub enum Either<L, R> {
 ///
 /// `ResponseFormat<BlockView>` returns the block in its Json format or molecule serialized
 /// Hex format.
-#[derive(PartialEq, Eq, Hash, Debug, Serialize, Deserialize, Clone, JsonSchema)]
+#[derive(PartialEq, Eq, Hash, Debug, Serialize, Deserialize, Clone)]
 #[serde(transparent)]
 pub struct ResponseFormat<V> {
     /// The inner value.

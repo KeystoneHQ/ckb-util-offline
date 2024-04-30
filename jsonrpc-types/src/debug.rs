@@ -1,8 +1,9 @@
-use schemars::JsonSchema;
+use alloc::string::String;
+// use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// Runtime logger config for extra loggers.
-#[derive(Clone, Default, Serialize, Deserialize, Debug, JsonSchema)]
+#[derive(Clone, Default, Serialize, Deserialize, Debug)]
 pub struct ExtraLoggerConfig {
     /// Sets log levels for different modules.
     ///
@@ -23,7 +24,7 @@ pub struct ExtraLoggerConfig {
 }
 
 /// Runtime logger config.
-#[derive(Clone, Default, Serialize, Deserialize, Debug, JsonSchema)]
+#[derive(Clone, Default, Serialize, Deserialize, Debug)]
 pub struct MainLoggerConfig {
     /// Sets log levels for different modules.
     ///

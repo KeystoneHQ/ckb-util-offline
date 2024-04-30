@@ -1,6 +1,7 @@
+use alloc::{fmt, format};
+use alloc::{fmt::format, string::String};
 use ckb_types::{packed, prelude::*};
 use faster_hex::{hex_decode, hex_encode};
-use std::fmt;
 
 /// Fixed-length 32 bytes binary encoded as a 0x-prefixed hex string in JSON.
 ///
@@ -73,7 +74,7 @@ impl serde::Serialize for Byte32 {
         buffer[1] = b'x';
         hex_encode(&self.0, &mut buffer[2..])
             .map_err(|e| serde::ser::Error::custom(format!("{e}")))?;
-        serializer.serialize_str(unsafe { ::std::str::from_utf8_unchecked(&buffer) })
+        serializer.serialize_str(unsafe { ::core::str::from_utf8_unchecked(&buffer) })
     }
 }
 

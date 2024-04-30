@@ -6,7 +6,7 @@ use ckb_types::core::tx_pool::{
 };
 use ckb_types::prelude::Unpack;
 use ckb_types::H256;
-use schemars::JsonSchema;
+// use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 

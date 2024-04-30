@@ -1,10 +1,12 @@
 use crate::{CellOutput, JsonBytes};
+use alloc::string::{String, ToString};
 use ckb_types::{
     core::cell::{CellMeta, CellStatus},
     prelude::Unpack,
     H256,
 };
-use schemars::JsonSchema;
+// disale JsonSchema
+// use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The JSON view of a cell with its status information.
@@ -42,7 +44,7 @@ use serde::{Deserialize, Serialize};
 /// }
 /// # "#).unwrap();
 /// ```
-#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
+#[derive(Clone, Debug, Serialize, Deserialize, )]
 pub struct CellWithStatus {
     /// The cell information.
     ///
@@ -86,7 +88,8 @@ pub struct CellWithStatus {
 /// }
 /// # "#).unwrap();
 /// ```
-#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
+// disale 
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct CellInfo {
     /// Cell fields appears in the transaction `outputs` array.
     pub output: CellOutput,
@@ -108,7 +111,8 @@ pub struct CellInfo {
 /// }
 /// # "#).unwrap();
 /// ```
-#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
+// disale 
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct CellData {
     /// Cell content.
     pub content: JsonBytes,
